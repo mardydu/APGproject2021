@@ -4,6 +4,7 @@
 include 'connection.php';
 session_start();
 
+//to get to play the last game
 $sqlgameid = "SELECT game_id FROM game";
 $exegameid = $pdo->query($sqlgameid);
 $id=0;
