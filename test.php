@@ -26,6 +26,23 @@ $sql0 = "SELECT * FROM game WHERE game_id=$id";
 $exe0 = $pdo->query($sql0);
 $game = $exe0->fetch();
 
+$nameuser = false;
+
+if ($game['total_participants'] == 0) {
+    header("Location: index.php");
+} else {
+    $sqlcheckp = "SELECT name FROM participants WHERE game=$id";
+    $execheckp = $pdo->query($sqlcheckp);
+    while ($namep = $execheckp->fetch()) {
+        if ($namep['name'] == $usrname) {
+            $nameuser = true;
+        }
+    }
+    if ($nameuser==false){
+        header("Location: index.php");
+    }
+}
+
 //update a txt file
 $myfile = fopen("readData.txt", "w") or die("Unable to open file!");
 $datacheer = $game['total_cheer'] . "\n";
