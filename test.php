@@ -7,21 +7,23 @@ session_start();
 //to get to play the last game
 $sqlgameid = "SELECT game_id FROM game";
 $exegameid = $pdo->query($sqlgameid);
-$id=0;
-while($totdata=$exegameid->fetch()){
+$id = 0;
+while ($totdata = $exegameid->fetch()) {
     $id++;
 }
 
+
+//to get username with session
 if (isset($_SESSION['username'])) {
     $usrname = $_SESSION['username'];
 } else {
     $usrname = "No username! Please fill in your username in the apgtest.marcelwira.com first!";
 }
 
+//to read table game from database
 $sql0 = "SELECT * FROM game WHERE game_id=$id";
 $exe0 = $pdo->query($sql0);
 $game = $exe0->fetch();
-
 
 //update a txt file
 $myfile = fopen("readData.txt", "w") or die("Unable to open file!");
@@ -88,6 +90,8 @@ fclose($myfile);
         </div>
         </br>
         </br>
+
+        <!-- leaderboard section -->
         <div class="row">
             <table class="table table-bordered table-hover">
                 <br>
@@ -125,6 +129,8 @@ fclose($myfile);
         </div>
 
     </div>
+
+    <!-- buffer function on cheer and jeer -->
     <script>
         var cheer = 0;
         var jeer = 0;
@@ -134,6 +140,7 @@ fclose($myfile);
             setTimeout(function() {
                 document.formCheerJeer.cheer.value = cheer;
                 document.formCheerJeer.jeer.value = jeer;
+                //delay submit
                 document.forms["formCheerJeer"].submit();
             }, 3000);
         }
@@ -143,6 +150,7 @@ fclose($myfile);
             setTimeout(function() {
                 document.formCheerJeer.cheer.value = cheer;
                 document.formCheerJeer.jeer.value = jeer;
+                //delay submit
                 document.forms["formCheerJeer"].submit();
             }, 3000);
         }
