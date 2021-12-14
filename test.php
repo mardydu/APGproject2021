@@ -18,6 +18,7 @@ if (isset($_SESSION['username'])) {
     $usrname = $_SESSION['username'];
 } else {
     $usrname = "No username! Please fill in your username in the apgtest.marcelwira.com first!";
+    header("Location: index.php");
 }
 
 //to read table game from database
