@@ -6,6 +6,6 @@ $exec = $pdo->prepare($sql);
 $exec->execute([0, 0, 0]);
 $_SESSION['last_id'] = $pdo->lastInsertId();
 
-header("Location: start.php");
+header("Location: startgameadmin.php");
 
 ?>
